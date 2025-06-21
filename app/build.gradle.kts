@@ -6,11 +6,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.testapp"
+    namespace = "com.example.replicaapp"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.example.testapp"
+        applicationId = "com.example.replicaapp"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
