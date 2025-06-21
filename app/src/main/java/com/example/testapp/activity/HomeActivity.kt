@@ -85,6 +85,12 @@ class HomeActivity : BaseActivity() {
             startActivity(intent)
 //            Toast.makeText(this, "Notification received", Toast.LENGTH_LONG).show()
         }
+
+        binding.btn8.setOnClickListener {
+            val intent = Intent(this, HandlingPermission::class.java)
+            startActivity(intent)
+            Toast.makeText(this, "Test", Toast.LENGTH_SHORT).show()
+        }
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
