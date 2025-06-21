@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottomSheetRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@android:color/white"
+    android:paddingTop="12dp"
+    android:paddingBottom="16dp"
+    android:clipToPadding="false">
+
+    <!-- Drag Handle -->
+    <View
+        android:layout_width="40dp"
+        android:layout_height="4dp"
+        android:layout_gravity="center"
+        android:background="@color/black"
+        android:layout_marginBottom="8dp" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <ImageView
+            android:id="@+id/courseImageView"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/app_icon"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/courseNameTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="VigoInfotech"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toTopOf="@+id/courseImageView"
+            app:layout_constraintStart_toEndOf="@+id/courseImageView"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/courseDurationTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="An ERP Solution Expert"
+            android:textSize="15sp"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toBottomOf="@+id/courseNameTextView"
+            app:layout_constraintStart_toStartOf="@+id/courseNameTextView"
+            app:layout_constraintEnd_toEndOf="@+id/courseNameTextView" />
+
+        <TextView
+            android:id="@+id/courseTracksTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Test"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            app:layout_constraintTop_toBottomOf="@+id/courseDurationTextView"
+            app:layout_constraintStart_toStartOf="@+id/courseNameTextView"
+            app:layout_constraintEnd_toEndOf="@+id/courseNameTextView" />
+
+        <Button
+            android:id="@+id/dismissButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Dismiss dialog"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/grey"
+            app:layout_constraintTop_toBottomOf="@+id/courseImageView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="24dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

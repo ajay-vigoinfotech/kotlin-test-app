@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "575911650640",
+    "project_id": "koltin-test-app",
+    "storage_bucket": "koltin-test-app.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:575911650640:android:f689742c8f848ddcbb3855",
+        "android_client_info": {
+          "package_name": "com.example.testapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAOR4ucb8mZ7-MScPMC18A0Jsq2Eq9is-Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

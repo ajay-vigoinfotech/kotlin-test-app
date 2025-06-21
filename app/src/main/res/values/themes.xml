@@ -1,0 +1,31 @@
+<!--<resources xmlns:tools="http://schemas.android.com/tools">-->
+<!--    &lt;!&ndash; Base application theme. &ndash;&gt;-->
+<!--    <style name="Base.Theme.TestApp" parent="Theme.Material3.DayNight.NoActionBar">-->
+<!--        &lt;!&ndash; Customize your light theme here. &ndash;&gt;-->
+<!--        &lt;!&ndash; <item name="colorPrimary">@color/my_light_primary</item> &ndash;&gt;-->
+<!--    </style>-->
+
+<!--    <style name="Theme.TestApp" parent="Base.Theme.TestApp" />-->
+<!--</resources>
+
+-->
+
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.TestApp" parent="Theme.Material3.Light.NoActionBar">
+        <!-- White theme customization for app content only -->
+        <item name="android:colorBackground">@android:color/white</item>
+        <item name="colorSurface">@android:color/white</item>
+        <item name="colorOnSurface">@android:color/black</item>
+
+        <!-- Keep status bar with system default appearance -->
+        <item name="android:statusBarColor">@android:color/holo_blue_bright</item>
+        <item name="android:windowLightStatusBar">true</item>
+
+        <!-- Ensure status bar is visible -->
+        <item name="android:windowFullscreen">false</item>
+        <item name="android:fitsSystemWindows">true</item>
+    </style>
+
+    <style name="Theme.TestApp" parent="Base.Theme.TestApp" />
+</resources>
