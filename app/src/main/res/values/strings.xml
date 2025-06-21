@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Let\'s Learn</string>
+    <string name="app_name">Replica App</string>
     <string name="crud_app">CRUD App</string>
     <string name="create">Create</string>
     <string name="enter_your_name">Enter Your Name</string>
