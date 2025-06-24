@@ -3,14 +3,18 @@ package com.example.app_notification_types.activity
 import android.annotation.SuppressLint
 import android.app.NotificationChannel
 import android.app.NotificationManager
+import android.app.PendingIntent
 import android.content.Context
+import android.content.Intent
 import android.graphics.BitmapFactory
 import android.os.Build
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
+import androidx.core.app.RemoteInput
 import com.example.app_notification_types.R
+import com.example.app_notification_types.ReplyBroadcastReceiver
 import com.example.app_notification_types.databinding.ActivityAppNotificationBinding
 
 class AppNotification : AppCompatActivity() {
@@ -20,7 +24,7 @@ class AppNotification : AppCompatActivity() {
         private const val CHANNEL_ID = "test_channel_id"
         private const val NOTIFICATION_ID = 1
     }
-;
+
     @SuppressLint("MissingPermission")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -120,6 +124,89 @@ class AppNotification : AppCompatActivity() {
             with(NotificationManagerCompat.from(this)) {
                 notify(NOTIFICATION_ID, builder.build())
             }
+        }
+
+        binding.btn5.setOnLongClickListener {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                requestPermissions(arrayOf(android.Manifest.permission.POST_NOTIFICATIONS), 1)
+            }
+
+            // Unique key for the input
+            val KEY_TEXT_REPLY = "key_text_reply"
+
+            // Create the RemoteInput
+            val remoteInput = RemoteInput.Builder(KEY_TEXT_REPLY)
+                .setLabel("Type your response")
+                .build()
+
+            // Intent to receive the reply
+            val replyIntent = Intent(this, ReplyBroadcastReceiver::class.java) // You'll create this class
+            val replyPendingIntent = PendingIntent.getBroadcast(
+                this,
+                0,
+                replyIntent,
+                PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_MUTABLE
+            )
+
+            // Add the action with the remote input
+            val action = NotificationCompat.Action.Builder(
+                R.drawable.app_icon, // your reply icon
+                "Reply",
+                replyPendingIntent
+            ).addRemoteInput(remoteInput)
+                .build()
+
+            val builder = NotificationCompat.Builder(this, CHANNEL_ID)
+                .setSmallIcon(R.drawable.app_icon)
+                .setContentTitle("Hello")
+                .setContentText("Test@1234")
+                .setPriority(NotificationCompat.PRIORITY_HIGH)
+                .setDefaults(NotificationCompat.DEFAULT_ALL)
+                .addAction(action) // Add the reply action here
+
+            with(NotificationManagerCompat.from(this)) {
+                notify(NOTIFICATION_ID, builder.build())
+            }
+            true
+        }
+
+        binding.btn4.setOnLongClickListener {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                requestPermissions(arrayOf(android.Manifest.permission.POST_NOTIFICATIONS), 1)
+            }
+
+            // Define intents for each action
+            val prevIntent = Intent(this, MediaReceiver::class.java).setAction("ACTION_PREVIOUS")
+            val playPauseIntent = Intent(this, MediaReceiver::class.java).setAction("ACTION_PLAY_PAUSE")
+            val nextIntent = Intent(this, MediaReceiver::class.java).setAction("ACTION_NEXT")
+
+            val prevPendingIntent = PendingIntent.getBroadcast(
+                this, 0, prevIntent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_MUTABLE
+            )
+            val playPausePendingIntent = PendingIntent.getBroadcast(
+                this, 1, playPauseIntent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_MUTABLE
+            )
+            val nextPendingIntent = PendingIntent.getBroadcast(
+                this, 2, nextIntent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_MUTABLE
+            )
+
+            // Build the notification
+            val builder = NotificationCompat.Builder(this, CHANNEL_ID)
+                .setContentTitle("Now Playing")
+                .setContentText("Your audio is playing")
+                .setPriority(NotificationCompat.PRIORITY_LOW)
+                .addAction(R.drawable.app_icon, "Previous", prevPendingIntent)
+                .addAction(R.drawable.app_icon, "Play/Pause", playPausePendingIntent)
+                .addAction(R.drawable.app_icon, "Next", nextPendingIntent)
+//                .setStyle(androidx.media.app.NotificationCompat.MediaStyle())
+                .setOnlyAlertOnce(true)
+                .setAutoCancel(false)
+
+            with(NotificationManagerCompat.from(this)) {
+                notify(NOTIFICATION_ID, builder.build())
+            }
+
+            true
         }
     }
 
