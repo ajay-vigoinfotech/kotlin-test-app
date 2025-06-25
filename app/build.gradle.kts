@@ -53,8 +53,10 @@ dependencies {
     implementation(libs.firebase.crashlytics.buildtools)
     implementation(libs.play.services.fitness)
     implementation(libs.firebase.common.ktx)
+    implementation(libs.ads.mobile.sdk)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    implementation(libs.play.services.location)
 }
 

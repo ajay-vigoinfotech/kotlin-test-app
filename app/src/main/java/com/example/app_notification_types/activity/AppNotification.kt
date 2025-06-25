@@ -170,44 +170,49 @@ class AppNotification : AppCompatActivity() {
             true
         }
 
-        binding.btn4.setOnLongClickListener {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                requestPermissions(arrayOf(android.Manifest.permission.POST_NOTIFICATIONS), 1)
-            }
-
-            // Define intents for each action
-            val prevIntent = Intent(this, MediaReceiver::class.java).setAction("ACTION_PREVIOUS")
-            val playPauseIntent = Intent(this, MediaReceiver::class.java).setAction("ACTION_PLAY_PAUSE")
-            val nextIntent = Intent(this, MediaReceiver::class.java).setAction("ACTION_NEXT")
-
-            val prevPendingIntent = PendingIntent.getBroadcast(
-                this, 0, prevIntent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_MUTABLE
-            )
-            val playPausePendingIntent = PendingIntent.getBroadcast(
-                this, 1, playPauseIntent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_MUTABLE
-            )
-            val nextPendingIntent = PendingIntent.getBroadcast(
-                this, 2, nextIntent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_MUTABLE
-            )
-
-            // Build the notification
-            val builder = NotificationCompat.Builder(this, CHANNEL_ID)
-                .setContentTitle("Now Playing")
-                .setContentText("Your audio is playing")
-                .setPriority(NotificationCompat.PRIORITY_LOW)
-                .addAction(R.drawable.app_icon, "Previous", prevPendingIntent)
-                .addAction(R.drawable.app_icon, "Play/Pause", playPausePendingIntent)
-                .addAction(R.drawable.app_icon, "Next", nextPendingIntent)
-//                .setStyle(androidx.media.app.NotificationCompat.MediaStyle())
-                .setOnlyAlertOnce(true)
-                .setAutoCancel(false)
-
-            with(NotificationManagerCompat.from(this)) {
-                notify(NOTIFICATION_ID, builder.build())
-            }
-
-            true
-        }
+//        binding.btn6.setOnClickListener {
+//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+//                requestPermissions(arrayOf(android.Manifest.permission.POST_NOTIFICATIONS), 1)
+//            }
+//
+//            // Define intents for each action
+//            val prevIntent = Intent(this, MediaReceiver::class.java).setAction("ACTION_PREVIOUS")
+//            val playPauseIntent = Intent(this, MediaReceiver::class.java).setAction("ACTION_PLAY_PAUSE")
+//            val nextIntent = Intent(this, MediaReceiver::class.java).setAction("ACTION_NEXT")
+//
+//            val prevPendingIntent = PendingIntent.getBroadcast(
+//                this, 0, prevIntent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_MUTABLE
+//            )
+//            val playPausePendingIntent = PendingIntent.getBroadcast(
+//                this, 1, playPauseIntent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_MUTABLE
+//            )
+//            val nextPendingIntent = PendingIntent.getBroadcast(
+//                this, 2, nextIntent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_MUTABLE
+//            )
+//
+//            val largeIcon = BitmapFactory.decodeResource(resources, R.drawable.app_icon)
+//            // Build the notification
+//            val builder = NotificationCompat.Builder(this, CHANNEL_ID)
+//                .setSmallIcon(R.drawable.app_icon)
+//                .setContentTitle("Ae Watan")
+//                .setContentText("Song by Arijit Singh")
+//                .setStyle(androidx.media.app.NotificationCompat.MediaStyle()
+//                    .setShowActionsInCompactView(0, 1, 2) // Indexes of the actions
+//                )
+//                .setPriority(NotificationCompat.PRIORITY_LOW)
+//                .addAction(R.drawable.previous, "Previous", prevPendingIntent)
+//                .addAction(R.drawable.play, "Play/Pause", playPausePendingIntent)
+//                .addAction(R.drawable.pause, "Play/Pause", playPausePendingIntent)
+//                .addAction(R.drawable.next, "Next", nextPendingIntent)
+//                .setLargeIcon(largeIcon)
+////                .setStyle(androidx.media.app.NotificationCompat.MediaStyle())
+//                .setOnlyAlertOnce(true)
+//                .setAutoCancel(false)
+//
+//            with(NotificationManagerCompat.from(this)) {
+//                notify(NOTIFICATION_ID, builder.build())
+//            }
+//        }
     }
 
     private fun createNotificationChannel() {

@@ -20,6 +20,9 @@ playServicesFitness = "21.2.0"
 retrofit = "2.9.0"
 firebaseCommonKtx = "21.0.0"
 firebase-analytics = "21.6.1"
+play-services-location = "21.0.1"
+adsMobileSdk = "0.17.0-alpha02" # Or latest available
+
 
 [libraries]
 converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
@@ -40,6 +43,8 @@ firebase-crashlytics-buildtools = { group = "com.google.firebase", name = "fireb
 play-services-fitness = { group = "com.google.android.gms", name = "play-services-fitness", version.ref = "playServicesFitness" }
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 firebase-common-ktx = { group = "com.google.firebase", name = "firebase-common-ktx", version.ref = "firebaseCommonKtx" }
+play-services-location = { group = "com.google.android.gms", name = "play-services-location", version.ref = "play_services_location" }
+ads-mobile-sdk = { group = "com.google.android.libraries.ads.mobile.sdk", name = "ads-mobile-sdk", version.ref = "adsMobileSdk" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
